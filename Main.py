@@ -43,7 +43,7 @@ def top_nav_menu():
         options=["Home", "PlotWizard", "AutoCode"],  # menu options
         icons=["house", "person", "gear"],  # icons for each option
         menu_icon="cast",  # optional menu icon
-        default_index=1,  # default selected option
+        default_index=0,  # default selected option
         orientation="horizontal",  # horizontal navigation bar at the top
         styles={
             "container": {

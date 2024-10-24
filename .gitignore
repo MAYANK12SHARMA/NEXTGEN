@@ -1,0 +1,9 @@
+.env
+__pycache__/
+.vscode/
+
+Faltu.ipynb
+
+requirements2.txt
+
+env/

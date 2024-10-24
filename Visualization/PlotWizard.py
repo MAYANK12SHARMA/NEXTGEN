@@ -87,7 +87,7 @@ def PlotWizard():
     with col2:
         # Select the plot type
         st.markdown("<h4 style='text-align: left; color: #FFFFFF;font-size:20px;padding-bottom: 0px;margin-bottom: 0px;'>Select the plot type</h4>", unsafe_allow_html=True)
-        choose_plot_type = st.selectbox("", [None] + ["Box", "Scatter"], key="plot_type")
+        choose_plot_type = st.selectbox("", [None] + ["Box Plot", "Scatter"], key="plot_type")
 
         
                 
