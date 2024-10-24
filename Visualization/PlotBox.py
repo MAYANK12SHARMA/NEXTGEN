@@ -139,11 +139,13 @@ def Box_plot_visualize(df):
                 file_name="box_plot.png",
                 mime="image/png"
             )
+        
+        Code = Generator_Code(df, x_column, y_column, hue_column, palette, showfliers, outlier_marker, outlier_size, outlier_color, linewidth, line_color, bg_color, showmeans, meanColor, meanMarker, (plot_width,plot_height), xlim, ylim, x_label, y_label, title)
+        st.code(Code, language='python')
     else:
         st.info("Click on the 'Generate Box Plot' button to create the Box Plot")
 
-        Code = Generator_Code(df, x_column, y_column, hue_column, palette, showfliers, outlier_marker, outlier_size, outlier_color, linewidth, line_color, bg_color, showmeans, meanColor, meanMarker, (plot_width,plot_height), xlim, ylim, x_label, y_label, title)
-        st.code(Code, language='python')
+        
    
    
 

@@ -10,7 +10,8 @@ def MainPageNavigation():
     
     with st.sidebar:
         # Apply the logo image
-        st.image("Visualization\Images\logo.png", width=200)
+        st.image("./Visualization/Images/logo.png", width=200)
+        
 
         # Navigation with selectbox
         st.header("Navigation")
