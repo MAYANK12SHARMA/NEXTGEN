@@ -31,7 +31,7 @@ def File_Upload(uploaded_file):
         return None
 
 def PlotGenerator(df, choose_plot_type):
-    if choose_plot_type == "Box":
+    if choose_plot_type == "Box Plot":
         Box_plot_visualize(df)
         
     elif choose_plot_type == "Scatter":
