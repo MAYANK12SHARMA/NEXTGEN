@@ -14,11 +14,50 @@ def MainPageNavigation():
         
 
         # Navigation with selectbox
-        st.header("Navigation")
-        page = st.selectbox("Go to", ["Home", "Features", "Settings", "Help"])
+        st.sidebar.markdown("""
+            <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+            <style>
+                .dropdown {
+                    position: relative;
+                    display: inline-block;
+                    margin-bottom: 10px;
+                }
+                
+                .dropbtn {
+                    background-color: #08ac24; /* Dark background */
+                    color: white;
+                    padding: 10px 20px;
+                    font-size: 16px;
+                    border: none;
+                    border-radius: 8px;
+                    cursor: pointer;
+                    display: inline-flex;
+                    align-items: center;
+                    width: 100%;
+                }
 
-        # Short description or instructions
-        st.info("Use the navigation menu above to explore different sections of the app.")
+                .arrow {
+                    margin-left: 100px;
+                    font-size: 20px;
+                    
+                }
+
+                .dropbtn:hover {
+                    background-color: #1a1b24; /* Slightly lighter on hover */
+                }
+                .custom {
+                    color: black;
+                    font-size: 20px;
+                }
+            </style>
+            <div class="dropdown">
+                <a href="next-gen-model-d5a8gmgth2cdbcam.canadacentral-01.azurewebsites.net" target="_blank">
+                    <button class="dropbtn">Go to Modelling <span class="arrow"><i class="fas fa-up-right-from-square custom"></i></span></button>
+                </a>
+            </div>
+            """, unsafe_allow_html=True)
+
+                # Short description or instructions
         
         # Lottie Animation
         lottile_json = load_lottie_file("./Visualization/FilesJson/Navbar-Jif.json")
