@@ -57,6 +57,10 @@ def Column_Remover(Column_list, remove_column):
         Column_list.remove(remove_column)
     return Column_list
 
+def column_rem_list(Column_list,remove_col_list):
+    for col in remove_col_list:
+        Column_list.remove(col)
+    return Column_list
 
 def find_repeating_categorical_columns(df):
     """

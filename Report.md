@@ -166,7 +166,7 @@
         <div class="gap" style="height: 100px;"></div>
         <div class="Logo-container">
             <div class="logo">
-                <img src="Visualization\Images\logo.png" class="img-logo" alt="Logo">
+                <img src="logo.png" class="img-logo" alt="Logo">
                 <h1>Exploratory Data Analysis Report</h1>
                 <div class="developer">Developed by: Mayank Sharma & Garvit Kedia</div>
                 <!-- Add your developer's name here -->

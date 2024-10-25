@@ -20,13 +20,40 @@ def Dataset_Overview(df):
     unique_dtypes = df.dtypes.unique()        # Get unique data types
     formatted_dtypes = [str(dtype) for dtype in unique_dtypes]  # Convert to string format
     
-    return [shape, formatted_dtypes]
+    # Returning as a DataFrame for easy display
+    overview_df = pd.DataFrame({
+        'Details': ['Shape', 'Unique Data Types', 'Number of Columns'],
+        'Values': [str(shape), ', '.join(formatted_dtypes), len(df.columns)]
+    })
+    
+    return overview_df
+def Dataset_Overview_html(df):
+    """
+    Analyzes the given pandas DataFrame and returns a list containing:
+    - Shape of the DataFrame (rows, columns)
+    - Unique data types of columns in a specific format
+    - Number of columns
 
+    Parameters:
+    df (pd.DataFrame): The DataFrame to analyze.
 
+    Returns:
+    list: A list containing (shape, unique datatypes, number of columns).
+    """
+    shape = df.shape                          # Get shape (rows, columns)
+    unique_dtypes = df.dtypes.unique()        # Get unique data types
+    formatted_dtypes = [str(dtype) for dtype in unique_dtypes]  # Convert to string format
+    
+
+    
+    return [shape,formatted_dtypes]
+
+import pandas as pd
+import pandas as pd
 
 def missing_values_report(df):
     """
-    Analyzes the given pandas DataFrame and returns a list of sublists containing:
+    Analyzes the given pandas DataFrame and returns a DataFrame containing:
     - Column Name
     - Total Missing Values
     - Percentage Missing
@@ -35,8 +62,13 @@ def missing_values_report(df):
     df (pd.DataFrame): The DataFrame to analyze.
 
     Returns:
-    list: A list of sublists containing [Column Name, Total Missing Values, Percentage Missing].
+    pd.DataFrame: A DataFrame with columns [Column Name, Total Missing Values, Percentage Missing].
     """
+    # Check for duplicate column names
+    if df.columns.duplicated().any():
+        # Create a new list of columns that adds a suffix to duplicates
+        df.columns = pd.io.parsers.ParserBase({'names': df.columns})._maybe_dedup_names(df.columns)
+    
     report = []  # Initialize the report list
     total_rows = df.shape[0]  # Total number of rows
 
@@ -45,7 +77,10 @@ def missing_values_report(df):
         percentage_missing = (total_missing / total_rows) * 100  # Calculate percentage missing
         report.append([column, total_missing, percentage_missing])  # Append sublist to report
 
-    return report
+    # Create a DataFrame from the report
+    report_df = pd.DataFrame(report, columns=['Column Name', 'Total Missing Values', 'Percentage Missing'])
+    
+    return report_df
 
 def missing_values_report_html(df):
     """
@@ -90,47 +125,49 @@ def missing_values_report_html(df):
 
     return html_output
 
+import numpy as np
+import pandas as pd
 
-def random_numerical_statistics(df):
+def full_numerical_statistics(df):
     """
-    Selects three random numerical columns from the DataFrame and computes various statistics.
+    Computes various statistics for all numerical columns in the DataFrame.
 
     Parameters:
     df (pd.DataFrame): The DataFrame to analyze.
 
     Returns:
-    list: A list containing [Statistic, Column A, Column B, Column C].
+    list: A list containing [Statistic, Column A, Column B, ..., Column N].
     """
     # Select only numerical columns
     numerical_cols = df.select_dtypes(include=[np.number]).columns.tolist()
 
-    # Check if there are at least three numerical columns
-    if len(numerical_cols) < 3:
-        raise ValueError("The DataFrame must contain at least three numerical columns.")
+    # Check if there are at least two numerical columns
+    if len(numerical_cols) < 1:
+        raise ValueError("The DataFrame must contain at least one numerical column.")
 
-    # Randomly select three columns
-    selected_columns = np.random.choice(numerical_cols, size=3, replace=False)
-
-    # Calculate statistics for the selected columns
+    # Calculate statistics for the numerical columns
     statistics = {
-        'Count': [df[col].count() for col in selected_columns],
-        'Mean': [df[col].mean() for col in selected_columns],
-        'Standard Deviation': [df[col].std() for col in selected_columns],
-        'Minimum': [df[col].min() for col in selected_columns],
-        'Q1': [df[col].quantile(0.25) for col in selected_columns],
-        'Median (Q2)': [df[col].median() for col in selected_columns],
-        'Q3': [df[col].quantile(0.75) for col in selected_columns],
-        'Maximum': [df[col].max() for col in selected_columns]
+        'Count': [df[col].count() for col in numerical_cols],
+        'Mean': [df[col].mean() for col in numerical_cols],
+        'Standard Deviation': [df[col].std() for col in numerical_cols],
+        'Minimum': [df[col].min() for col in numerical_cols],
+        'Q1': [df[col].quantile(0.25) for col in numerical_cols],
+        'Median (Q2)': [df[col].median() for col in numerical_cols],
+        'Q3': [df[col].quantile(0.75) for col in numerical_cols],
+        'Maximum': [df[col].max() for col in numerical_cols]
     }
 
     # Create the result list with the header
-    result = [['Statistic', selected_columns[0], selected_columns[1], selected_columns[2]]]
+    result = [['Statistic'] + numerical_cols]  # Header row with all column names
     for stat_name, stat_values in statistics.items():
         # Format the values to 2 decimal places
         formatted_values = [f"{value:.2f}" if isinstance(value, float) else value for value in stat_values]
         result.append([stat_name] + formatted_values)
 
     return result
+
+
+
 
 import numpy as np
 
@@ -197,9 +234,12 @@ def random_numerical_statistics_html(df):
     return html_output
 
 
-def random_correlation_matrix(df):
+import numpy as np
+import pandas as pd
+
+def full_correlation_matrix(df):
     """
-    Selects three random numerical columns from the DataFrame and computes their correlation matrix.
+    Computes the correlation matrix for all numerical columns in the DataFrame.
 
     Parameters:
     df (pd.DataFrame): The DataFrame to analyze.
@@ -210,25 +250,22 @@ def random_correlation_matrix(df):
     # Select only numerical columns
     numerical_cols = df.select_dtypes(include=[np.number]).columns.tolist()
 
-    # Check if there are at least three numerical columns
-    if len(numerical_cols) < 3:
-        raise ValueError("The DataFrame must contain at least three numerical columns.")
+    # Check if there are at least two numerical columns
+    if len(numerical_cols) < 2:
+        raise ValueError("The DataFrame must contain at least two numerical columns.")
 
-    # Randomly select three columns
-    selected_columns = np.random.choice(numerical_cols, size=3, replace=False)
-
-    # Calculate the correlation matrix for the selected columns
-    correlation_matrix = df[selected_columns].corr()
+    # Calculate the correlation matrix for all numerical columns
+    correlation_matrix = df[numerical_cols].corr()
 
     # Convert the correlation matrix to a list of lists, including headers
     result = correlation_matrix.round(2).values.tolist()  # Round values to 2 decimal places
-    
+
     # Add headers to the result
-    header = [''] + list(selected_columns)  # Create header row
+    header = [''] + list(numerical_cols)  # Create header row
     result.insert(0, header)  # Insert header at the top
-    
+
     # Append the selected columns as labels for the rows
-    for i, col in enumerate(selected_columns):
+    for i, col in enumerate(numerical_cols):
         result[i + 1].insert(0, col)  # Add column label to each row
 
     return result
@@ -451,3 +488,40 @@ def duplicate_summary_html(df):
     html_output += "</table>"
 
     return html_output
+
+
+
+
+
+
+import streamlit as st
+import pandas as pd
+
+def display_dataframe_slider(df):
+    """
+    Creates a slider in Streamlit to select a row from the given DataFrame and displays the selected row.
+    
+    Parameters:
+    - df: Pandas DataFrame to display.
+    """
+    # Check if the DataFrame is empty
+    if df.empty:
+        st.warning("The DataFrame is empty.")
+        return
+    
+    # Get the last index of the DataFrame
+    max_index = len(df) - 1
+    
+    # Slider for selecting the row index
+    selected_index = st.slider(
+        "Select Row Index",
+        min_value=0,
+        max_value=max_index,
+        value=0,
+        step=1,
+        label_visibility="collapsed"
+    )
+    
+    return df.iloc[selected_index]
+
+

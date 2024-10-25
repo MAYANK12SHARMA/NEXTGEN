@@ -51,7 +51,7 @@ def MainPageNavigation():
                 }
             </style>
             <div class="dropdown">
-                <a href="next-gen-model-d5a8gmgth2cdbcam.canadacentral-01.azurewebsites.net" target="_blank">
+                <a href="https://next-gen-model-d5a8gmgth2cdbcam.canadacentral-01.azurewebsites.net/" target="_blank">
                     <button class="dropbtn">Go to Modelling <span class="arrow"><i class="fas fa-up-right-from-square custom"></i></span></button>
                 </a>
             </div>
@@ -69,40 +69,39 @@ def MainPage():
     # Introduction Section
     Col1, col2 = st.columns([3,1])
     with Col1:    
-        st.markdown(
-    """
-    <style>
-    @font-face {
-        font-family: 'Algerian';
-        src: url('font-family\Algerian-Regular.ttf') format('truetype');
-    }
+        st.markdown("""
+                    <style>
+                        @font-face {
+                            font-family: 'Algerian';
+                            src: url('font-family\Algerian-Regular.ttf') format('truetype');
+                        }
 
-    .centered , h2 {
-        text-align: center;
-        font-family: 'Algerian', sans-serif;
-        color: #00FFFF;
-        font-weight: 300;
-    }
-    
-    .justified {
-        text-align: justify;
-        font-family: Arial, sans-serif;
-    }
-    
-    
-    </style>
+                        .centered , h2 {
+                            text-align: center;
+                            font-family: 'Algerian', sans-serif;
+                            color: #00FFFF;
+                            font-weight: 300;
+                        }
+                        
+                        .justified {
+                            text-align: justify;
+                            font-family: Arial, sans-serif;
+                        }
+                        
+                        
+                    </style>
 
-    <div class="centered">
-        <h2>👋 <b>Introduction</b></h2>
-    </div>
-    
-    <div class="justified">
-        Welcome to the <b>Visualization Tool</b>, a powerful and easy-to-use platform designed for generating stunning data visualizations with just a few clicks! Whether you're a beginner or a seasoned data scientist, our tool offers intuitive interfaces and customizable options for every use case. <br><br>
-        From selecting chart types to generating clean, reusable Python code, you’ll find everything you need to create beautiful and insightful plots. This tool supports a variety of datasets and customization options, ensuring that your visualizations are both informative and visually appealing. <br><br>
-    </div>
-    """,
-    unsafe_allow_html=True
-    )
+                    <div class="centered">
+                        <h2>👋 <b>Introduction</b></h2>
+                    </div>
+                    
+                    <div class="justified">
+                        Welcome to the <b>Visualization Tool</b>, a powerful and easy-to-use platform designed for generating stunning data visualizations with just a few clicks! Whether you're a beginner or a seasoned data scientist, our tool offers intuitive interfaces and customizable options for every use case. <br><br>
+                        From selecting chart types to generating clean, reusable Python code, you’ll find everything you need to create beautiful and insightful plots. This tool supports a variety of datasets and customization options, ensuring that your visualizations are both informative and visually appealing. <br><br>
+                    </div>
+                    """,
+                    unsafe_allow_html=True
+        )
 
     with col2:
         lottile_json = load_lottie_file("./Visualization/FilesJson/Animation.json")

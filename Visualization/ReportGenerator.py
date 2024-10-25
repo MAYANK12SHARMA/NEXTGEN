@@ -3,13 +3,15 @@ import pandas as pd
 from Visualization.EDAFunctions import (
     Dataset_Overview,
     missing_values_report,
-    random_numerical_statistics,
-    random_correlation_matrix,
+    full_numerical_statistics,
+    full_correlation_matrix,
     outlier_summary,
     duplicate_summary,
 )
 
+from streamlit_lottie import st_lottie
 from Visualization.EDAFunctions import (
+    Dataset_Overview_html,
     missing_values_report_html,
     random_numerical_statistics_html,
     random_correlation_matrix_html,
@@ -17,7 +19,8 @@ from Visualization.EDAFunctions import (
     duplicate_summary_html,
 )
 
-files_to_delete = ["Report_copy.html", "Report_copy.md", "Report_copy.pdf"]
+pdf_files_to_delete = [ "Report_copy.md", "Report_copy.pdf"]
+html_files_to_delete = ["Report_copy.html"]
 
 import pandas as pd
 import streamlit as st
@@ -32,7 +35,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 from Visualization.HelperFun import Axis_Limits, Column_filter, Column_Remover
 from Visualization.AIGen import Generator_Code_AI
-from Visualization.HelperFun import Column_filter, Axis_Limits, find_repeating_categorical_columns, Column_Remover, copy_file, delete_files
+from Visualization.HelperFun import Column_filter, Axis_Limits, find_repeating_categorical_columns, Column_Remover, copy_file, delete_files, load_lottie_file
 
 files_to_delete = ["SampleScatterPlot_copy.html", "SampleScatterPlot_copy.md","SampleScatterPlot_copy.pdf","BoxPlt_copy.md","BoxPlt_copy.pdf","BoxPlt_copy.html"]
 
@@ -241,66 +244,155 @@ def display_dataframe(data):
     st.dataframe(data)
 
 def generate_report(df):
-    st.title("Data Analysis Report")
+    
+    if df.empty:
+        st.warning("The DataFrame is empty.")
+        return
 
-    # Checkboxes for different analyses
-    if st.sidebar.checkbox("Show Dataset Overview"):
-        overview = Dataset_Overview(df)
-        display_dataframe(pd.DataFrame(overview[1:], columns=overview[0]))
+    st.sidebar.markdown(
+        """<h2 style='color: #FFFFFF; font-weight: bold;align-item:center;text-align:center; font-size: 18px; font-family: "Times New Roman"; border-bottom: 2px solid #FFFFFF; padding-bottom: 10px;'>1. Show Dataset preview</h2><br>""",
+        unsafe_allow_html=True
+    )
+    
+    # Get the last index of the DataFrame
+    max_index = len(df) - 2
+    
+    # Slider for selecting the row index
+    selected_index = st.sidebar.slider(
+        "Select Row Index",
+        min_value=0,
+        max_value=max_index,
+        value=(0,max_index),
+        step=1,
+        label_visibility="collapsed"
+    )
+    
+    if selected_index:
+        st.markdown(
+            """<h2 style='color: #FFFFFF; font-weight: bold;align-item:center;text-align:center; font-size: 26px; font-family: "Times New Roman"; border-bottom: 2px solid #FFFFFF; padding-bottom: 10px;'>Dataset Preview</h2><br>""",
+            unsafe_allow_html=True
+        )
+        st.dataframe(df.iloc[selected_index[0]:selected_index[1] + 1])
+    
+    st.sidebar.markdown(
+        """<h2 style='color: #FFFFFF; font-weight: bold;align-item:center;text-align:center; font-size: 18px; font-family: "Times New Roman"; border-bottom: 2px solid #FFFFFF; padding-bottom: 10px;'>2. Show Dataset Overview</h2><br>""",
+        unsafe_allow_html=True
+    )
 
-    if st.sidebar.checkbox("Show Missing Values Report"):
+    # Select box for Dataset Overview with hidden label
+    overview = st.sidebar.selectbox("", ["False", "True"], label_visibility="collapsed", key="overview")
+
+    if overview == "True":
+        st.markdown(
+        """<h2 style='color: #FFFFFF; font-weight: bold;align-item:center;text-align:center; font-size: 26px; font-family: "Times New Roman"; border-bottom: 2px solid #FFFFFF; padding-bottom: 10px;'>Show Dataset Overview</h2><br>""",
+        unsafe_allow_html=True
+        )
+        overview = Dataset_Overview(df)  # Replace with your function to get overview
+        st.write(overview) 
+    
+    st.sidebar.markdown(
+        """<h2 style='color: #FFFFFF; font-weight: bold;align-item:center;text-align:center; font-size: 18px; font-family: "Times New Roman"; border-bottom: 2px solid #FFFFFF; padding-bottom: 10px;'>3. Show Missing Values Report</h2><br>""",
+        unsafe_allow_html=True
+    )
+    
+    missing_values = st.sidebar.selectbox("", ["False", "True"], label_visibility="collapsed", key="missing_values")
+    
+    if missing_values == "True":
+        st.markdown(
+        """<h2 style='color: #FFFFFF; font-weight: bold;align-item:center;text-align:center; font-size: 26px; font-family: "Times New Roman"; border-bottom: 2px solid #FFFFFF; padding-bottom: 10px;'>Show Missing Values Report</h2><br>""",
+        unsafe_allow_html=True
+        )
         missing_report = missing_values_report(df)
-        display_dataframe(pd.DataFrame(missing_report[1:], columns=missing_report[0]))
-
-    if st.sidebar.checkbox("Show Random Numerical Statistics"):
-        statistics = random_numerical_statistics(df)
+        st.dataframe(missing_report.transpose())
+        
+        
+    st.sidebar.markdown(
+        """<h2 style='color: #FFFFFF; font-weight: bold;align-item:center;text-align:center; font-size: 18px; font-family: "Times New Roman"; border-bottom: 2px solid #FFFFFF; padding-bottom: 10px;'>4. Show Random Numerical Statistics</h2><br>""",
+        unsafe_allow_html=True
+    )
+    
+    statistics = st.sidebar.selectbox("", ["False", "True"], label_visibility="collapsed", key="statistics")
+    
+    if statistics == "True":
+        st.markdown(
+        """<h2 style='color: #FFFFFF; font-weight: bold;align-item:center;text-align:center; font-size: 26px; font-family: "Times New Roman"; border-bottom: 2px solid #FFFFFF; padding-bottom: 10px;'>Show Random Numerical Statistics</h2><br>""",
+        unsafe_allow_html=True
+        )
+        statistics = full_numerical_statistics(df)
         display_dataframe(pd.DataFrame(statistics[1:], columns=statistics[0]))
-
-    if st.sidebar.checkbox("Show Random Correlation Matrix"):
-        correlation = random_correlation_matrix(df)
+        
+    st.sidebar.markdown(
+        """<h2 style='color: #FFFFFF; font-weight: bold;align-item:center;text-align:center; font-size: 18px; font-family: "Times New Roman"; border-bottom: 2px solid #FFFFFF; padding-bottom: 10px;'>5. Show Random Correlation Matrix</h2><br>""",
+        unsafe_allow_html=True
+    )
+    
+    correlation = st.sidebar.selectbox("", ["False", "True"], label_visibility="collapsed", key="correlation")
+    
+    if correlation == "True":
+        st.markdown(
+        """<h2 style='color: #FFFFFF; font-weight: bold;align-item:center;text-align:center; font-size: 26px; font-family: "Times New Roman"; border-bottom: 2px solid #FFFFFF; padding-bottom: 10px;'>Show Random Correlation Matrix</h2><br>""",
+        unsafe_allow_html=True
+        )
+        correlation = full_correlation_matrix(df)
         display_dataframe(pd.DataFrame(correlation[1:], columns=correlation[0]))
-
-    if st.sidebar.checkbox("Show Outlier Summary"):
+        
+    st.sidebar.markdown(
+        """<h2 style='color: #FFFFFF; font-weight: bold;align-item:center;text-align:center; font-size: 18px; font-family: "Times New Roman"; border-bottom: 2px solid #FFFFFF; padding-bottom: 10px;'>6. Show Outlier Summary</h2><br>""",
+        unsafe_allow_html=True
+    )
+    
+    outlier = st.sidebar.selectbox("", ["False", "True"], label_visibility="collapsed", key="outlier")
+    
+    if outlier == "True":
+        st.markdown(
+        """<h2 style='color: #FFFFFF; font-weight: bold;align-item:center;text-align:center; font-size: 26px; font-family: "Times New Roman"; border-bottom: 2px solid #FFFFFF; padding-bottom: 10px;'>Show Outlier Summary</h2><br>""",
+        unsafe_allow_html=True
+        )
         outlier_report = outlier_summary(df)
-        display_dataframe(pd.DataFrame(outlier_report[1:], columns=outlier_report[0]))
-
-    if st.sidebar.checkbox("Show Duplicate Summary"):
+        st.dataframe(pd.DataFrame(outlier_report[1:], columns=outlier_report[0]).transpose())
+        
+    st.sidebar.markdown(
+        """<h2 style='color: #FFFFFF; font-weight: bold;align-item:center;text-align:center; font-size: 18px; font-family: "Times New Roman"; border-bottom: 2px solid #FFFFFF; padding-bottom: 10px;'>7. Show Duplicate Summary</h2><br>""",
+        unsafe_allow_html=True
+    )
+    
+    duplicate = st.sidebar.selectbox("", ["False", "True"], label_visibility="collapsed", key="duplicate")
+    
+    if duplicate == "True":
+        st.markdown(
+        """<h2 style='color: #FFFFFF; font-weight: bold;align-item:center;text-align:center; font-size: 26px; font-family: "Times New Roman"; border-bottom: 2px solid #FFFFFF; padding-bottom: 10px;'>Show Duplicate Summary</h2><br>""",
+        unsafe_allow_html=True
+        )
         duplicate_report = duplicate_summary(df)
-        display_dataframe(pd.DataFrame(duplicate_report[1:], columns=duplicate_report[0]))
-
-# Main function to run the Streamlit app
+        display_dataframe(pd.DataFrame(duplicate_report[1:], columns=duplicate_report[0]).transpose())
+        
+        
 def ReportGenerator():
-    st.header("Upload Dataset")
-    st.sidebar.title("Data Analysis Report")
     
-    
-
-    # File uploader for dataset
+    with st.sidebar:
+        image_path = './Visualization/assets/Images/logo.png'
+        if os.path.exists(image_path):
+            st.image(image_path, width=200)
+        else:
+            st.error("Logo image not found.")
+            
     uploaded_file = st.file_uploader("Choose a CSV file", type=["csv"])
-
-    if uploaded_file is not None:
-        # Read the dataset
+    if not uploaded_file:
+        with st.sidebar:
+            st.info("Please upload a CSV file and choose a plot type.")
+            lottie_json = load_lottie_file("./Visualization/FilesJson/Navbar-Jif.json")
+            st_lottie(lottie_json, speed=1, width=250, height=250, key="initial")
+            
+    else:
         df = pd.read_csv(uploaded_file)
-
-        # Show a preview of the dataset
-        st.subheader("Dataset Preview")
-        st.dataframe(df.head())
 
         # Generate report based on user's choice
         generate_report(df)
         
         if st.sidebar.button("Generate Report......"):
-            with st.spinner("Generating Report..."):
-                # Generate the report
-                Report_Gen(df)
-                st.success("Report generated successfully!")
-
-
-
-
-
-
-
+            Report_Gen(df)
+            st.success("Report generated successfully!")
+            
 def Report_Gen(df):
     
     changing_sec =  change_content(df)
@@ -308,31 +400,34 @@ def Report_Gen(df):
     replace_all_markers("Report.md", changing_sec)
     # Convert the Markdown file to HTML
     html_file = convert_md_to_html("Report_copy.md")
-
+    
     # Generate PDF
     with st.spinner("Generating PDF..."):
         pdf_file = generate_pdf_with_multiprocessing(html_file)
-
-    st.success("PDF generated successfully!")
-
-    # Add a download button for the generated PDF
-    with open(pdf_file, "rb") as file:
-        st.download_button(
-            label="Download PDF",
-            data=file,
-            file_name="EDA_Report.pdf",
-            mime="application/pdf",
-            # on_click=lambda: delete_files(files_to_delete)
-        )
-        
         
     
-
+    # Add a download button for the generated PDF
+    col1, col2 = st.columns([1, 1])
+    
+    with col1:
+            
+            with open(pdf_file, "rb") as file:
+                st.download_button(
+                    label="Download PDF",
+                    data=file,
+                    file_name="EDA_Report.pdf",
+                    mime="application/pdf",
+                    on_click=lambda: delete_files(pdf_files_to_delete)
+                )
+                
+    with col2:
+            img = "Visualization\Images\logo.png"
+            create_zip_and_download(html_file, img)
+                
 def change_content(df):
-        
-    dataset_overview = Dataset_Overview(df)    
-
-
+    
+    dataset_overview = Dataset_Overview_html(df)
+    
     Changing_Section = {
         "I1Shape_(rows, columns)" : str(dataset_overview[0]),
         "I2Data_Types" : str(dataset_overview[1]),
@@ -343,4 +438,204 @@ def change_content(df):
         "VI_Duplicates_Summary": duplicate_summary_html(df)
         
     }
+    
     return Changing_Section
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+#     missing_values = st.sidebar.selectbox("", ["False", "True"], label_visibility="collapsed")
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#     if st.sidebar.checkbox("Show Missing Values Report"):
+#         missing_report = missing_values_report(df)
+#         display_dataframe(pd.DataFrame(missing_report[1:], columns=missing_report[0]))
+
+#     if st.sidebar.checkbox("Show Random Numerical Statistics"):
+#         statistics = random_numerical_statistics(df)
+#         display_dataframe(pd.DataFrame(statistics[1:], columns=statistics[0]))
+
+#     if st.sidebar.checkbox("Show Random Correlation Matrix"):
+#         correlation = random_correlation_matrix(df)
+#         display_dataframe(pd.DataFrame(correlation[1:], columns=correlation[0]))
+
+#     if st.sidebar.checkbox("Show Outlier Summary"):
+#         outlier_report = outlier_summary(df)
+#         display_dataframe(pd.DataFrame(outlier_report[1:], columns=outlier_report[0]))
+
+#     if st.sidebar.checkbox("Show Duplicate Summary"):
+#         duplicate_report = duplicate_summary(df)
+#         display_dataframe(pd.DataFrame(duplicate_report[1:], columns=duplicate_report[0]))
+
+# # Main function to run the Streamlit app
+# def ReportGenerator():
+#     with st.sidebar:
+#         image_path = './Visualization/assets/Images/logo.png'
+#         if os.path.exists(image_path):
+#             st.image(image_path, width=200)
+#         else:
+#             st.error("Logo image not found.")
+            
+#     uploaded_file = st.file_uploader("Choose a CSV file", type=["csv"])
+#     if not uploaded_file:
+#         with st.sidebar:
+#             st.info("Please upload a CSV file and choose a plot type.")
+#             lottie_json = load_lottie_file("./Visualization/FilesJson/Navbar-Jif.json")
+#             st_lottie(lottie_json, speed=1, width=250, height=250, key="initial")
+
+#     else:
+#         df = pd.read_csv(uploaded_file)
+
+#         st.subheader("Dataset Preview")
+#         st.dataframe(df.head())
+
+#         # Generate report based on user's choice
+#         generate_report(df)
+        
+#         if st.sidebar.button("Generate Report......"):
+#             Report_Gen(df)
+#             st.success("Report generated successfully!")
+
+
+
+
+
+
+
+# def Report_Gen(df):
+    
+#     changing_sec =  change_content(df)
+    
+#     replace_all_markers("Report.md", changing_sec)
+#     # Convert the Markdown file to HTML
+#     html_file = convert_md_to_html("Report_copy.md")
+
+#     # Generate PDF
+#     with st.spinner("Generating PDF..."):
+#         pdf_file = generate_pdf_with_multiprocessing(html_file)
+
+#     st.success("PDF generated successfully!")
+
+#     # Add a download button for the generated PDF
+#     col1, col2 = st.columns([1, 1])
+    
+#     with col1:
+        
+#         with open(pdf_file, "rb") as file:
+#             st.download_button(
+#                 label="Download PDF",
+#                 data=file,
+#                 file_name="EDA_Report.pdf",
+#                 mime="application/pdf",
+#                 on_click=lambda: delete_files(pdf_files_to_delete)
+#             )
+            
+#     with col2:
+        
+#         with open(html_file, "rb") as file:
+#             st.download_button(
+#                 label="Download HTML",
+#                 data=file,
+#                 file_name="EDA_Report.html",
+#                 mime="text/html",
+#                 on_click=lambda: delete_files(html_files_to_delete)
+#             )
+            
+            
+        
+
+# def change_content(df):
+        
+#     dataset_overview = Dataset_Overview(df)    
+
+
+#     Changing_Section = {
+#         "I1Shape_(rows, columns)" : str(dataset_overview[0]),
+#         "I2Data_Types" : str(dataset_overview[1]),
+#         "II_Missing_Values": missing_values_report_html(df),
+#         "III_Summary_Numerical_Statistics": random_numerical_statistics_html(df),
+#         "IV_Correlation_Matrix" : random_correlation_matrix_html(df),
+#         "V_Outlier_Summary": outlier_summary_html(df),
+#         "VI_Duplicates_Summary": duplicate_summary_html(df)
+        
+#     }
+#     return Changing_Section
+
+
+import streamlit as st
+import zipfile
+import os
+
+def create_zip_and_download(html_file, other_file):
+    """
+    Creates a ZIP file containing specified files and provides a download button for it.
+
+    Parameters:
+    - html_file (str): Path to the HTML file to include.
+    - other_file (str): Path to another file to include.
+    """
+    # Function to create a ZIP file containing the specified files
+    def create_zip_file(file_list, zip_file_name):
+        with zipfile.ZipFile(zip_file_name, 'w') as zip_file:
+            for file in file_list:
+                zip_file.write(file, os.path.basename(file))
+
+    # Create a ZIP file name
+    zip_file_name = "report.zip"
+    
+    # Create the ZIP file
+    create_zip_file([html_file, other_file], zip_file_name)
+
+    # Provide a download button for the ZIP file
+    with open(zip_file_name, "rb") as zip_file:
+        st.download_button(
+            label="HTML file",
+            data=zip_file,
+            file_name=zip_file_name,
+            mime="application/zip",
+            on_click=lambda: delete_files([html_file, other_file, zip_file_name])  # Adjust your delete logic as needed
+        )

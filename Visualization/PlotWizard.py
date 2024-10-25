@@ -4,6 +4,8 @@ from Visualization.PlotBox import Box_plot_visualize
 from Visualization.HelperFun import load_lottie_file
 from streamlit_lottie import st_lottie
 from Visualization.PlotScatter import Scatter_Plot_visualize
+from Visualization.PlotHeatMap import Heatmap_Visualize
+from Visualization.PlotPairPlot import Paiplot_Visualization
 
 #? ==================================== Additional Functions ====================================
 
@@ -37,6 +39,11 @@ def PlotGenerator(df, choose_plot_type):
         
     elif choose_plot_type == "Scatter Plot":
         Scatter_Plot_visualize(df)
+    elif choose_plot_type == "HeatMap":
+        Heatmap_Visualize(df)
+    elif choose_plot_type == "Pair Plot":
+        Paiplot_Visualization(df)
+        
     else:
         st.warning("Please Select a Plot Type")
 
@@ -87,7 +94,7 @@ def PlotWizard():
     with col2:
         # Select the plot type
         st.markdown("<h4 style='text-align: left; color: #FFFFFF;font-size:20px;padding-bottom: 0px;margin-bottom: 0px;'>Select the plot type</h4>", unsafe_allow_html=True)
-        choose_plot_type = st.selectbox("", [None] + ["Box Plot", "Scatter Plot"], key="plot_type")
+        choose_plot_type = st.selectbox("", [None] + ["Box Plot", "Scatter Plot", "HeatMap","Pair Plot"], key="plot_type")
                
     PlotWizardNavigation(uploaded_file, choose_plot_type)
 

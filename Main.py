@@ -41,8 +41,8 @@ def load_lottie_file(file_path: str):
 def top_nav_menu():
     selected = option_menu(
         menu_title=None,  # No title for the horizontal menu
-        options=["Home", "PlotWizard", "AutoCode"],  # menu options
-        icons=["house", "person", "gear"],  # icons for each option
+        options=["Home", "PlotWizard", "DataSphere"],  # menu options
+        icons=["house", "magic", "globe"],  # icons for each option
         menu_icon="cast",  # optional menu icon
         default_index=0,  # default selected option
         orientation="horizontal",  # horizontal navigation bar at the top
@@ -53,8 +53,8 @@ def top_nav_menu():
                 "height": "40px",  # Set navbar height
                 "top": "0", "position": "sticky", "z-index": "999",
             },
-            "nav-link": {"font-size": "16px", "text-align": "center", "margin": "0px", "--hover-color": "#eee"},
-            "icon": {"color": "orange", "font-size": "20px","padding-bottom": "2px"},
+            "nav-link": {"font-size": "16px", "text-align": "center", "margin": "0px", "--hover-color": "#000", "height":"40px"},
+            "icon": {"color": "orange", "font-size": "20px","padding-bottom": "2px" },
             "nav-link-selected": {"background-color": "#02ab21"},
         }
     )
@@ -84,7 +84,7 @@ def main():
     elif selected == "PlotWizard":
         PlotWizard()
         
-    elif selected == "AutoCode":
+    elif selected == "DataSphere":
         ReportGenerator()  
 
 # Run the main function
