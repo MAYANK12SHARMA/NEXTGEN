@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Analysis of Dataset Using BoxPlot</title>
+    <title>Analysis of Dataset Using Scatter Plot</title>
     <style>
         h1,
         h2,
@@ -40,12 +40,10 @@
             padding: 10px 0;
             background-color: white;
             z-index: 10;
-            /* Ensures the footer stays on top */
         }
 
         body {
             margin-bottom: 60px;
-            /* Make space for footer */
         }
 
         .content {
@@ -56,6 +54,7 @@
         .heading {
             font-family: 'Algerian', 'Times New Roman', Times, serif;
         }
+
         .code {
             background-color: #f4f4f4;
             border: 1px solid #ddd;
@@ -70,62 +69,51 @@
 <body>
 
     <div class="content">
-        <h1 style="text-align: center;" class="heading">Analysis of Datset using BoxPlot</h1>
+        <h1 style="text-align: center;" class="heading">Analysis of Dataset Using Scatter Plot</h1>
         <hr>
 
         <h2>Introduction</h2>
         <p>
-            In this report, we analyze a dataset using a BoxPlot to understand the distribution of values across
-            different categories.
-            BoxPlots are a standardized way of displaying the distribution of data based on a five-number summary
-            ("minimum", first quartile (Q1),
-            median, third quartile (Q3), and "maximum"). They provide insights into the central tendency and variability
-            of the dataset while also
-            highlighting any outliers.
+            In this report, we analyze a dataset using a Scatter Plot to explore the relationship between two continuous variables.
+            Scatter plots display data points on a two-dimensional graph, where each point represents an observation in the dataset.
+            This visualization helps in identifying patterns, trends, and correlations between the variables.
         </p>
 
         <h2>Dataset Overview</h2>
         <p>
-            The dataset consists of several samples representing different categories, each containing 100 observations.
-            The data were generated to simulate different populations with varying levels of variance.
-            The objective of this analysis is to visually interpret these datasets and identify any trends or outliers
-            that may exist.
+            The dataset used in this analysis consists of two variables, X and Y, representing 100 observations.
+            The aim is to identify any correlation or pattern between these variables using a scatter plot.
         </p>
 
         <h2>Code Example</h2>
 
-<div class="code">
-        <pre>
+        <div class="code">
+            <pre>
 
 CodingPart
 
 </pre>
-
 </div>
 
         <hr>
 
-        <h2>OutPut</h2>
+        <h2>Output</h2>
         <img src="
-
-    ImagesofBoxPlot
-
-    " alt="BoxPlot Example" style="max-width:100%; height:auto;">
+    ImagesofScatterPlot
+    " alt="Scatter Plot Example" style="max-width:100%; height:auto;">
 
         <h2>Analysis by AI</h2>
         <p>
-            The BoxPlot below illustrates the distribution of values across three different datasets. Each box
-            represents the
-            interquartile range (IQR) of the data, with the median value indicated by the horizontal line inside the
-            box.
-            The whiskers extend to the minimum and maximum values, excluding any outliers.
+            The scatter plot visualizes the relationship between the X and Y variables. A positive correlation is evident,
+            as the values of Y increase with X. The trend suggests that as X grows, Y tends to grow as well, which may
+            indicate a linear relationship.
         </p>
 
     </div>
 
     <div class="footer">
         &copy; 2024 Data Analysis Report. All rights reserved.<br>
-        <img src="Visualization\Images\logo.png" alt="Logo" style="width: 100px; height: 100px;align-item:center;">
+        <img src="Visualization\Images\logo.png" alt="Logo" style="width: 100px; height: 100px; align-item:center;">
     </div>
 
 </body>

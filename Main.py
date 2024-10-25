@@ -4,6 +4,7 @@ from Visualization.Home import MainPage, MainPageNavigation
 import json
 from streamlit_lottie import st_lottie
 from Visualization.PlotWizard import PlotWizard
+from Visualization.ReportGenerator import ReportGenerator
 
 #? ================================== Additional part  ==================================================
  
@@ -70,17 +71,6 @@ def top_nav_menu():
 #? ========================================= Code Generation Page ================================== 
 
 
-
-def settings_page():
-    st.title("Settings Page")
-    st.write("You can change your settings here.")
-
-    # Sidebar content for the Settings page
-    st.sidebar.header("Settings Sidebar")
-    st.sidebar.write("This is the sidebar for the Settings page.")
-    st.sidebar.selectbox("Choose a setting", ["Option 1", "Option 2", "Option 3"])
-
-
 def main():
     st.write("<h1 style='text-align: center;'>Plots Generator</h1>", unsafe_allow_html=True)
     
@@ -95,7 +85,7 @@ def main():
         PlotWizard()
         
     elif selected == "AutoCode":
-        settings_page()  # Settings page with Settings sidebar
+        ReportGenerator()  
 
 # Run the main function
 if __name__ == "__main__":

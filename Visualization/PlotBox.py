@@ -11,7 +11,11 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 from Visualization.HelperFun import Axis_Limits, Column_filter, Column_Remover
 from Visualization.AIGen import Generator_Code_AI
+from Visualization.HelperFun import Column_filter, Axis_Limits, find_repeating_categorical_columns, Column_Remover, copy_file, delete_files
 
+files_to_delete = ["SampleScatterPlot_copy.html", "SampleScatterPlot_copy.md","SampleScatterPlot_copy.pdf","BoxPlt_copy.md","BoxPlt_copy.pdf","BoxPlt_copy.html"]
+
+    
 #? =================================== Additonal Functions ===================================
 
 import markdown2
@@ -570,11 +574,12 @@ def Box_plot_visualize(df):
                             label="Download PDF",
                             data=file,
                             file_name="SampleBoxPlot.pdf",
-                            mime="application/pdf"
+                            mime="application/pdf",
+                            on_click=lambda: delete_files(files_to_delete)
                         )  
-     
-        else:
+        if st.sidebar("Generate PDF... "):
             pass
+
     
         
         
