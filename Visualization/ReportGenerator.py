@@ -611,37 +611,3 @@ def change_content(df):
 #     }
 #     return Changing_Section
 
-
-import streamlit as st
-import zipfile
-import os
-
-def create_zip_and_download(html_file, other_file):
-    """
-    Creates a ZIP file containing specified files and provides a download button for it.
-
-    Parameters:
-    - html_file (str): Path to the HTML file to include.
-    - other_file (str): Path to another file to include.
-    """
-    # Function to create a ZIP file containing the specified files
-    def create_zip_file(file_list, zip_file_name):
-        with zipfile.ZipFile(zip_file_name, 'w') as zip_file:
-            for file in file_list:
-                zip_file.write(file, os.path.basename(file))
-
-    # Create a ZIP file name
-    zip_file_name = "report.zip"
-    
-    # Create the ZIP file
-    create_zip_file([html_file, other_file], zip_file_name)
-
-    # Provide a download button for the ZIP file
-    with open(zip_file_name, "rb") as zip_file:
-        st.download_button(
-            label="HTML file",
-            data=zip_file,
-            file_name=zip_file_name,
-            mime="application/zip",
-            on_click=lambda: delete_files([html_file, other_file, zip_file_name])  # Adjust your delete logic as needed
-        )
