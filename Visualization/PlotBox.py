@@ -523,7 +523,7 @@ def Box_plot_visualize(df):
                         meanColor=meanColor, meanMarker=meanMarker, figsize=(plot_width,plot_height), x_label=x_label, 
                         y_label=y_label, title=title)
                 
-                with open('box_plot.png', "rb") as file:
+                with open('box_plots.png', "rb") as file:
                     st.download_button(
                         label="Download Box Plot",
                         data=file,
@@ -546,16 +546,16 @@ def Box_plot_visualize(df):
                 col1, col2 = st.columns([1,1])
                 
                 with col1:
-                    with open('box_plot.png', "rb") as file:
+                    with open('box_plots.png', "rb") as file:
                         st.download_button(
                             label="Download Box Plot",
                             data=file,
-                            file_name="box_plot.png",
+                            file_name="box_plots.png",
                             mime="image/png"
                         )
                 with col2:
                     changing_sec = {
-                        "ImagesofBoxPlot": "box_plot.png",
+                        "ImagesofBoxPlot": "box_plots.png",
                         "CodingPart": Code
                     }
                     replace_all_markers("SampleBoxPlot.md", changing_sec)
@@ -577,7 +577,7 @@ def Box_plot_visualize(df):
                             mime="application/pdf",
                             on_click=lambda: delete_files(files_to_delete)
                         )  
-        if st.sidebar("Generate PDF... "):
+        else:
             pass
 
     
