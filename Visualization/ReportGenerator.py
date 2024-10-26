@@ -421,8 +421,14 @@ def Report_Gen(df):
                 )
                 
     with col2:
-            img = "Visualization\Images\logo.png"
-            create_zip_and_download(html_file, img)
+            with open(html_file, "rb") as file:
+                st.download_button(
+                    label="Download HTML",
+                    data=file,
+                    file_name="EDA_Report.html",
+                    mime="text/html",
+                    on_click=lambda: delete_files(html_files_to_delete)
+                )
                 
 def change_content(df):
     
