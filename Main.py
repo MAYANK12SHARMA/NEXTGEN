@@ -5,6 +5,8 @@ import json
 from streamlit_lottie import st_lottie
 from Visualization.PlotWizard import PlotWizard
 from Visualization.ReportGenerator import ReportGenerator
+from AItools.DocsWhisper import DocsWhisper
+from AItools.AISphere import AISphere
 
 #? ================================== Additional part  ==================================================
  
@@ -41,8 +43,8 @@ def load_lottie_file(file_path: str):
 def top_nav_menu():
     selected = option_menu(
         menu_title=None,  # No title for the horizontal menu
-        options=["Home", "PlotWizard", "DataSphere"],  # menu options
-        icons=["house", "magic", "globe"],  # icons for each option
+        options=["Home", "PlotWizard", "EDASolver", "AISphere", "DocsWhisper"],  # options for the horizontal menu
+        icons=["house", "magic", "globe", "robot", "book"],  # icons for the options icon for chatbot 
         menu_icon="cast",  # optional menu icon
         default_index=0,  # default selected option
         orientation="horizontal",  # horizontal navigation bar at the top
@@ -58,6 +60,7 @@ def top_nav_menu():
             "nav-link-selected": {"background-color": "#02ab21"},
         }
     )
+    
     return selected
 
 #! ============================================= Pages =============================================
@@ -72,9 +75,18 @@ def top_nav_menu():
 
 
 def main():
-    st.write("<h1 style='text-align: center;'>Plots Generator</h1>", unsafe_allow_html=True)
+    st.markdown("""
+                <style>
+                    @font-face {
+                        font-family: 'Algerian';
+                        src: url('font-family\Algerian-Regular.ttf') format('truetype');
+                    }
+                </style>
+                <h1 style='text-align: center; font-family: Algerian; color: #fff;font-weight:300;'>NEXTGEN</h1>
+                    """,unsafe_allow_html=True)
     
-    selected = top_nav_menu()  
+    selected = top_nav_menu()
+      
 
     # Route to different pages based on user selection
     if selected == "Home":
@@ -84,8 +96,12 @@ def main():
     elif selected == "PlotWizard":
         PlotWizard()
         
-    elif selected == "DataSphere":
+    elif selected == "EDASolver":
         ReportGenerator()  
+    elif selected == "DocsWhisper":
+        DocsWhisper()
+    elif selected == "AISphere":
+        AISphere()
 
 # Run the main function
 if __name__ == "__main__":
