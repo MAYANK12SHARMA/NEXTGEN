@@ -42,7 +42,6 @@
     <ul>
       <li><a href="#Introduction">Introduction</a></li>
       <li><a href="#Features">Features</a></li>
-      <li><a href="#Screenshots">Screenshots</a></li>
       <li><a href="#Demo">Demo Video</a></li>
     </ul>
 </li>
@@ -53,11 +52,9 @@
     <li><a href="#installation">Installation</a></li>
     </ul>
 </li>
-<li><a href="#usage">Usage</a></li>
-<li><a href="#roadmap">Roadmap</a></li>
 <li><a href="#contributing">Contributing</a></li>
-<li><a href="#license">License</a></li>
-<li><a href="#contact">Contact</a></li>
+<li><a href="#about-us">About Us</a></li>
+    
 </ol>
 
 <h1 style="text-align: center;font-family: Algerian;font-weight:300;">About The Project</h1>
