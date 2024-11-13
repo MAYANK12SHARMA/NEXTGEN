@@ -125,9 +125,44 @@ Ensure you have the following tools installed:
 
 ### Installation  
 
-1. Clone the repository:  
+1. **Clone the repository:**
    ```sh
    git clone https://github.com/MAYANK12SHARMA/NEXTGEN.git
+   ```
+2. **Install dependencies:**
+
+   ```sh
+   pip install -r requirements.txt
+   ```
+3. **Run the application locally:**
+
+    ```sh
+    streamlit run Main.py
+    ```
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+## Contributing
+
+Contributions are welcome!
+
+1. **Fork the repository**  
+2. **Create a feature branch**:  
+   ```sh
+       git checkout -b feature/AmazingFeature
+   ```
+3. **Commit your changes:**
+   ```sh
+       git commit -m 'Add new feature'
+   ```
+4. **Push to the branch:**
+   ```sh
+       git push origin feature/AmazingFeature
+   ```
+5. **Open a pull request**
+   
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
