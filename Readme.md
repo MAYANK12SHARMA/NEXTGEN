@@ -1,15 +1,15 @@
-<!DOCTYPE html>
 <html>
 <head>
 <style>
-    h1, h2, h3, h4, h5, h6 {
-        font-family: sans-serif;
-    }
-    p {
-        font-family: 'Times New Roman', Times, serif;
-        font-size: 18px;
-    }
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Arial', sans-serif;
+}
+p {
+    font-family: 'Times New Roman', 'Times', serif;
+    font-size: 18px;
+}
 </style>
+    
 </head>
 <body>
     <a id="readme-top"></a> 
