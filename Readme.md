@@ -1,21 +1,17 @@
+<!DOCTYPE html>
 <html>
 <head>
-<style>
-h1, h2, h3, h4, h5, h6 {
-    font-family: 'Arial', sans-serif;
-}
-p {
-    font-family: 'Times New Roman', 'Times', serif;
-    font-size: 18px;
-}
-</style>
-    
 </head>
 <body>
-    <a id="readme-top"></a> 
+    <a id="readme-top"></a>
+    
+
+
 <br/>
 <div align="center">
-    <img src="https://github.com/user-attachments/assets/2ddaf9fa-386d-4f85-b016-1250610775c1" alt="Logo" width="200" height="200">
+  <a href="https://github.com/MAYANK12SHARMA/NEXTGEN">
+    <img src="https://github.com/user-attachments/assets/7332fd39-16ed-4fde-8c60-515719a3d554" alt="Logo" width="350" height="350">
+  </a>
   <h2 align="center">NEXTGEN</h2>
 
   <p align="center">
@@ -27,6 +23,13 @@ p {
     ·
     <a href="https://github.com/MAYANK12SHARMA/NEXTGEN/issues">Request Feature</a>
   </p>
+
+[![Contributors](https://img.shields.io/github/contributors/MAYANK12SHARMA/NEXTGEN.svg)](https://github.com/MAYANK12SHARMA/NEXTGEN/graphs/contributors)
+[![Forks](https://img.shields.io/github/forks/MAYANK12SHARMA/NEXTGEN.svg)](https://github.com/MAYANK12SHARMA/NEXTGEN/network/members)
+[![Stargazers](https://img.shields.io/github/stars/MAYANK12SHARMA/NEXTGEN.svg)](https://github.com/MAYANK12SHARMA/NEXTGEN/stargazers)
+[![Issues](https://img.shields.io/github/issues/MAYANK12SHARMA/NEXTGEN.svg)](https://github.com/MAYANK12SHARMA/NEXTGEN/issues)
+[![MIT License](https://img.shields.io/github/license/MAYANK12SHARMA/NEXTGEN.svg)](https://github.com/MAYANK12SHARMA/NEXTGEN/blob/main/LICENSE.txt)
+[![LinkedIn](https://img.shields.io/badge/-LinkedIn-blue.svg?style=flat&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/mayanksharmams/)
 </div>
 
 <div style="border-bottom: 3px solid #fff;"></div>
@@ -57,7 +60,6 @@ p {
 </ol>
 
 <h1 style="text-align: center;font-family: Algerian;font-weight:300;">About The Project</h1>
-
 ### Introduction  
 
 **NEXTGEN** is a groundbreaking platform designed to simplify data analysis, visualization, and AI/ML learning. It integrates intuitive tools like **PlotWizard**, **AI-Sphere**, and **DocsWhisper** to offer an all-in-one experience for students, data analysts, and machine learning enthusiasts. With cloud support via **Microsoft Azure**, it ensures scalability and accessibility for real-world projects.
@@ -95,8 +97,6 @@ p {
 - ![Python](https://img.shields.io/badge/Python-%233776AB.svg?style=for-the-badge&logo=python&logoColor=white)
 - ![Azure](https://img.shields.io/badge/Azure-%230089D6.svg?style=for-the-badge&logo=microsoft-azure&logoColor=white)
 - ![OpenAI](https://img.shields.io/badge/OpenAI-%23464646.svg?style=for-the-badge&logo=openai&logoColor=white)
-    ![Contributors](https://img.shields.io/github/contributors/MAYANK12SHARMA/NEXTGEN.svg)
-- 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -157,7 +157,6 @@ Contributions are welcome!
 
 # NEXTGEN: A Comprehensive Platform for Data Visualization, EDA, and AI Learning
 
-Welcome to **NEXTGEN**, an all-in-one platform that combines cutting-edge tools for **data visualization**, **exploratory data analysis (EDA)**, and **AI learning**. NEXTGEN is designed to simplify complex workflows and make advanced analytics accessible to everyone — from students and data enthusiasts to professional analysts and AI learners.
 
 ---
 
