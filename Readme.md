@@ -12,13 +12,14 @@
 </style>
 </head>
 <body>
-    <a id="readme-top"></a>
-[![Contributors](https://img.shields.io/github/contributors/MAYANK12SHARMA/NEXTGEN.svg)](https://github.com/MAYANK12SHARMA/NEXTGEN/graphs/contributors)
-[![Forks](https://img.shields.io/github/forks/MAYANK12SHARMA/NEXTGEN.svg)](https://github.com/MAYANK12SHARMA/NEXTGEN/network/members)
-[![Stargazers](https://img.shields.io/github/stars/MAYANK12SHARMA/NEXTGEN.svg)](https://github.com/MAYANK12SHARMA/NEXTGEN/stargazers)
-[![Issues](https://img.shields.io/github/issues/MAYANK12SHARMA/NEXTGEN.svg)](https://github.com/MAYANK12SHARMA/NEXTGEN/issues)
-[![MIT License](https://img.shields.io/github/license/MAYANK12SHARMA/NEXTGEN.svg)](https://github.com/MAYANK12SHARMA/NEXTGEN/blob/main/LICENSE.txt)
-[![LinkedIn](https://img.shields.io/badge/-LinkedIn-blue.svg?style=flat&logo=linkedin&logoColor=white)](https://linkedin.com/in/YOUR_LINKEDIN_PROFILE)
+    <a id="readme-top"></a> 
+    
+    ![Contributors](https://img.shields.io/github/contributors/MAYANK12SHARMA/NEXTGEN.svg)
+    [![Forks](https://img.shields.io/github/forks/MAYANK12SHARMA/NEXTGEN.svg)](https://github.com/MAYANK12SHARMA/NEXTGEN/network/members)
+    [![Stargazers](https://img.shields.io/github/stars/MAYANK12SHARMA/NEXTGEN.svg)](https://github.com/MAYANK12SHARMA/NEXTGEN/stargazers)
+    [![Issues](https://img.shields.io/github/issues/MAYANK12SHARMA/NEXTGEN.svg)](https://github.com/MAYANK12SHARMA/NEXTGEN/issues)
+    [![MIT License](https://img.shields.io/github/license/MAYANK12SHARMA/NEXTGEN.svg)](https://github.com/MAYANK12SHARMA/NEXTGEN/blob/main/LICENSE.txt)
+    [![LinkedIn](https://img.shields.io/badge/-LinkedIn-blue.svg?style=flat&logo=linkedin&logoColor=white)](https://linkedin.com/in/YOUR_LINKEDIN_PROFILE)
 
     
 <!-- Project Logo -->
@@ -105,6 +106,8 @@
 - ![Python](https://img.shields.io/badge/Python-%233776AB.svg?style=for-the-badge&logo=python&logoColor=white)
 - ![Azure](https://img.shields.io/badge/Azure-%230089D6.svg?style=for-the-badge&logo=microsoft-azure&logoColor=white)
 - ![OpenAI](https://img.shields.io/badge/OpenAI-%23464646.svg?style=for-the-badge&logo=openai&logoColor=white)
+    ![Contributors](https://img.shields.io/github/contributors/MAYANK12SHARMA/NEXTGEN.svg)
+- 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
