@@ -26,6 +26,8 @@
 <br/>
 <div align="center">
   <a href="https://github.com/MAYANK12SHARMA/NEXTGEN">
+      ![logo](https://github.com/user-attachments/assets/2ddaf9fa-386d-4f85-b016-1250610775c1)
+
     <img src="logo.png" alt="Logo" width="100" height="100">
   </a>
 
