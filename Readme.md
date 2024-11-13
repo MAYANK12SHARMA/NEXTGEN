@@ -43,6 +43,7 @@
       <li><a href="#Introduction">Introduction</a></li>
       <li><a href="#Features">Features</a></li>
       <li><a href="#Screenshots">Screenshots</a></li>
+      <li><a href="#Demo">Demo Video</a></li>
     </ul>
 </li>
 <li>
@@ -91,12 +92,18 @@
 
 ---
 
+### DEMO 
+
+https://github.com/user-attachments/assets/f169e0f1-8ad2-4654-9008-23fca2be8fcc
+
+
 ### Built With  
 
 - ![Streamlit](https://img.shields.io/badge/Streamlit-%23FF4B4B.svg?style=for-the-badge&logo=streamlit&logoColor=white)
 - ![Python](https://img.shields.io/badge/Python-%233776AB.svg?style=for-the-badge&logo=python&logoColor=white)
 - ![Azure](https://img.shields.io/badge/Azure-%230089D6.svg?style=for-the-badge&logo=microsoft-azure&logoColor=white)
-- ![OpenAI](https://img.shields.io/badge/OpenAI-%23464646.svg?style=for-the-badge&logo=openai&logoColor=white)
+- ![Microsoft Fiber](https://img.shields.io/badge/Microsoft%20Fiber-%230089D6.svg?style=for-the-badge&logo=microsoft&logoColor=white)
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -152,75 +159,6 @@ Contributions are welcome!
 5. **Open a pull request**
    
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-# NEXTGEN: A Comprehensive Platform for Data Visualization, EDA, and AI Learning
-
-
----
-
-## Features
-
-### 1. **PlotWizard: Create and Customize Visualizations**
-- **Graph Type Selection**: Choose from various plot types such as **line plots**, **bar plots**, **scatter plots**, **heatmaps**, and **boxplots**.
-- **Customization**: Modify axes, colors, labels, and titles. Fine-tune the appearance of your plots with ease.
-- **AI-Generated Code**: Automatically generate Python code for your plots and customize it as needed.
-- **Export Options**: Download your visualizations as **PNG**, **SVG**, or **PDF**.
-- **PDF Analysis Reports**: Generate a comprehensive analysis report for any plot, including insights, graph, and code.
-
-### 2. **AISphere: Learn Machine Learning & Deep Learning**
-- **AI Chatbot**: Interact with an intelligent AI chatbot trained on over 1000 pages of **machine learning** (ML) and **deep learning** (DL) concepts.
-- **Solve ML/DL Problems**: Get help with solving problems related to ML, DL, and AI using the integrated knowledge base.
-- **Conceptual Learning**: Deep dive into AI and ML topics to enhance your understanding.
-
-### 3. **DocsWhisper: Extract Insights from Documents & Datasets**
-- **Upload PDFs and CSVs**: Upload any document (PDF) or dataset (CSV, Excel) and analyze it easily.
-- **Instant Querying**: Ask questions about your uploaded documents and datasets to receive instant, detailed insights.
-- **Data Insights**: Gain valuable insights into your data by exploring its contents without writing complex queries.
-
-### 4. **EDASolver: Simplify Exploratory Data Analysis (EDA)**
-- **Automated EDA**: Automatically perform EDA steps like identifying outliers, handling missing values, and summarizing dataset characteristics.
-- **Data Preprocessing**: Clean and preprocess your dataset before performing any analysis.
-- **PDF/HTML Reports**: Generate detailed reports of your EDA process, available in **PDF** and **HTML** formats.
-
----
-
-## Installation
-
-To run **NEXTGEN** locally, follow these steps:
-
-### Prerequisites:
-- Python 3.x
-- Streamlit
-- Azure AI Studio
-- Microsoft Fabric (for data storage and retrieval)
-
-### Steps:
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/your-username/nextgen.git
-    ```
-2. Navigate to the project directory:
-
-    ```bash
-    cd nextgen
-    ```
-3. Install the required packages:
-
-    ```bash
-    pip install -r requirements.txt
-    ```
-
-4. Run the Streamlit app:
-
-    ```bash
-    streamlit run Main.py
-    ```
-
-5. Access the app in your browser at `http://localhost:8501`.
-
----
 
 ## About Us
 
