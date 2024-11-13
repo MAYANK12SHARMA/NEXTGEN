@@ -13,7 +13,6 @@
 </head>
 <body>
     <a id="readme-top"></a>
-    
     [![Contributors][contributors-shield]][contributors-url]
     [![Forks][forks-shield]][forks-url]
     [![Stargazers][stars-shield]][stars-url]
@@ -25,7 +24,7 @@
 
 <br/>
 <div align="center">
-    <img src="https://github.com/user-attachments/assets/2ddaf9fa-386d-4f85-b016-1250610775c1" alt="Logo" width="100" height="100">
+    <img src="https://github.com/user-attachments/assets/2ddaf9fa-386d-4f85-b016-1250610775c1" alt="Logo" width="200" height="200">
   <h2 align="center">NEXTGEN</h2>
 
   <p align="center">
