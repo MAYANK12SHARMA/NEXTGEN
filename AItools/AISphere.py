@@ -72,6 +72,44 @@ def AISphere():
         chat_prompt = st.session_state["chat_history"] + [{"role": "user", "content": str(user_query)}]
 
         # Generate the completion
+        # completion = client.chat.completions.create(
+        #     model=deployment,
+        #     messages=chat_prompt,
+        #     max_tokens=500,
+        #     temperature=0.7,
+        #     top_p=0.95,
+        #     frequency_penalty=0,
+        #     presence_penalty=0,
+        #     stream=False,
+        #     extra_body={
+        #         "data_sources": [
+        #             {
+        #                 "type": "azure_search",
+        #                 "parameters": {
+        #                     "endpoint": f"{search_endpoint}",
+        #                     "index_name": search_index,
+        #                     "semantic_configuration": "default",
+        #                     "query_type": "vector_semantic_hybrid",
+        #                     "fields_mapping": {},
+        #                     "in_scope": True,
+        #                     "role_information": "You are an AI assistant that helps people find information.",
+        #                     "filter": None,
+        #                     "strictness": 3,
+        #                     "top_n_documents": 5,
+        #                     "authentication": {
+        #                         "type": "api_key",
+        #                         "key": f"{search_key}"
+        #                     },
+        #                     "embedding_dependency": {
+        #                         "type": "deployment_name",
+        #                         "deployment_name": "text-embedding-ada-002"
+        #                     },
+        #                 }
+        #             }
+        #         ]
+        #     },
+        # )
+        # Safely access citations
         completion = client.chat.completions.create(
             model=deployment,
             messages=chat_prompt,
@@ -81,37 +119,11 @@ def AISphere():
             frequency_penalty=0,
             presence_penalty=0,
             stream=False,
-            extra_body={
-                "data_sources": [
-                    {
-                        "type": "azure_search",
-                        "parameters": {
-                            "endpoint": f"{search_endpoint}",
-                            "index_name": search_index,
-                            "semantic_configuration": "default",
-                            "query_type": "vector_semantic_hybrid",
-                            "fields_mapping": {},
-                            "in_scope": True,
-                            "role_information": "You are an AI assistant that helps people find information.",
-                            "filter": None,
-                            "strictness": 3,
-                            "top_n_documents": 5,
-                            "authentication": {
-                                "type": "api_key",
-                                "key": f"{search_key}"
-                            },
-                            "embedding_dependency": {
-                                "type": "deployment_name",
-                                "deployment_name": "text-embedding-ada-002"
-                            },
-                        }
-                    }
-                ]
-            },
-        )
+            )
+
         # Safely access citations
-        citations = completion.choices[0].message.context["citations"]
-        return [completion.choices[0].message.content, citations[1:3]]
+        return [completion.choices[0].message.content]
+
 
 
 
