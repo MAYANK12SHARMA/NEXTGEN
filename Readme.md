@@ -99,7 +99,6 @@ https://github.com/user-attachments/assets/f169e0f1-8ad2-4654-9008-23fca2be8fcc
 - ![Streamlit](https://img.shields.io/badge/Streamlit-%23FF4B4B.svg?style=for-the-badge&logo=streamlit&logoColor=white)
 - ![Python](https://img.shields.io/badge/Python-%233776AB.svg?style=for-the-badge&logo=python&logoColor=white)
 - ![Azure](https://img.shields.io/badge/Azure-%230089D6.svg?style=for-the-badge&logo=microsoft-azure&logoColor=white)
-- ![Microsoft Fiber](https://img.shields.io/badge/Microsoft%20Fiber-%230089D6.svg?style=for-the-badge&logo=microsoft&logoColor=white)
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
