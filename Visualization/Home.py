@@ -52,13 +52,13 @@ def MainPageNavigation():
             </style>
             
             """, unsafe_allow_html=True)
-            <div class="dropdown">
-                <a href="https://next-gen-model-d5a8gmgth2cdbcam.canadacentral-01.azurewebsites.net/" target="_blank">
-                    <button class="dropbtn">Go to Modelling Platform<span class="arrow"><i class="fas fa-up-right-from-square custom"></i></span></button>
-                </a>
-            </div>
+        <div class="dropdown">
+            <a href="https://next-gen-model-d5a8gmgth2cdbcam.canadacentral-01.azurewebsites.net/" target="_blank">
+                <button class="dropbtn">Go to Modelling Platform<span class="arrow"><i class="fas fa-up-right-from-square custom"></i></span></button>
+            </a>
+        </div>
 
-                # Short description or instructions
+                
         
         # Lottie Animation
         lottile_json = load_lottie_file("./Visualization/FilesJson/Navbar-Jif.json")
