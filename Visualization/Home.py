@@ -52,7 +52,7 @@ def MainPageNavigation():
             </style>
             
             <div class="dropdown">
-                <a href="https://next-gen-model-d5a8gmgth2cdbcam.canadacentral-01.azurewebsites.net/" target="_blank">
+                <a href="https://automated-data-science.streamlit.app/" target="_blank">
                     <button class="dropbtn">Go to Modelling Platform<span class="arrow"><i class="fas fa-up-right-from-square custom"></i></span></button>
                 </a>
             </div>
