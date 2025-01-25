@@ -81,8 +81,8 @@
 
         <h2>Dataset Overview</h2>
         <p>
-            The dataset used in this analysis consists of two variables, X and Y, representing 100 observations.
-            The aim is to identify any correlation or pattern between these variables using a scatter plot.
+            The Iris dataset is a small, well-known dataset used for classification, data visualization, and statistical analysis. It consists of 150 samples of iris flowers, with measurements of physical features to differentiate between three species.
+
         </p>
 
         <h2>Code Example</h2>
@@ -112,7 +112,7 @@ CodingPart
     </div>
 
     <div class="footer">
-        &copy; 2024 Data Analysis Report. All rights reserved.<br>
+        &copy; 2025 Data Analysis Report. All rights reserved.<br>
         <img src="Visualization\Images\logo.png" alt="Logo" style="width: 100px; height: 100px; align-item:center;">
     </div>
 
